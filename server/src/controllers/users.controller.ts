@@ -22,13 +22,13 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 		maxAge: 60 * 60 * 1000,
 		httpOnly: true,
 		sameSite: "none",
-		secure: true,
+		secure: true
 	});
 	res.cookie("refreshToken", refreshToken, {
 		maxAge: 60 * 60 * 24 * 1000 * 365,
 		httpOnly: true,
 		sameSite: "none",
-		secure: true,
+		secure: true
 	});
 
 	res.json(user);
