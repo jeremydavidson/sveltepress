@@ -20,11 +20,15 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 	const refreshToken = createJsonWebToken({ sessionId: session.id }, "1y");
 	res.cookie("accessToken", accessToken, {
 		maxAge: 60 * 60 * 1000,
-		httpOnly: true
+		httpOnly: true,
+		sameSite: "none",
+		secure: true,
 	});
 	res.cookie("refreshToken", refreshToken, {
 		maxAge: 60 * 60 * 24 * 1000 * 365,
-		httpOnly: true
+		httpOnly: true,
+		sameSite: "none",
+		secure: true,
 	});
 
 	res.json(user);
