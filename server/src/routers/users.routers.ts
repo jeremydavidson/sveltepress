@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUser, getCurrentUser, loginUser, logoutUser, updateUser } from "@/controllers";
+import { createUser, indexUsers, loginUser, logoutUser, updateUser } from "@/controllers";
 import { isAuthenticated, useDto } from "@/middleware";
 import { CreateUserDto, UpdateUserDto } from "@/validators";
 
@@ -117,7 +117,7 @@ const router = Router();
 router
 	.route("/")
 	.post(useDto(CreateUserDto), createUser)
-	.get(isAuthenticated, getCurrentUser)
+	.get(isAuthenticated, indexUsers)
 	.patch(isAuthenticated, useDto(UpdateUserDto), updateUser);
 
 router.route("/login").post(loginUser);

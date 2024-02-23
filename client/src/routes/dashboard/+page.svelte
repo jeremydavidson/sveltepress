@@ -28,4 +28,21 @@
 	</div>
 {:then data}
 	<h1>Hi there {data.email}</h1>
+	<hr />
+	<table>
+		<thead>
+			<th>ID</th>
+			<th>Email</th>
+			<th>Created Date</th>
+		</thead>
+		<tbody class="divide-y">
+			{#each data as item, i}
+				<tr>
+					<td>{i}</td>
+					<td>{item.email}</td>
+					<td>{new Date(item.createdAt).toLocaleDateString()}</td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
 {/await}
